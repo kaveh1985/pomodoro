@@ -1,0 +1,25 @@
+.todo-container {
+  margin-top: 20px;
+  position: relative;
+  background-color: #C95B6D;
+  height: 70px;
+}
+
+.todo-container > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.todo-buttons {
+  margin-right: 10px;
+  padding: 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  height: 43px;
+  cursor: pointer;
+  color: white;
+  background-color: #1e90ff;
+}

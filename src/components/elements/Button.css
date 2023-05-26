@@ -1,0 +1,9 @@
+.custom-button {
+    padding: 10px 20px;
+    transition: transform 0.3s;
+  }
+  
+  .clicked {
+    transform: scale(0.9);
+  }
+  
