@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import TodoList from './TodoList';
+import Edit from './Edit';
 import Button from './elements/Button'
 import "../styles/Todo.css";
 
@@ -30,11 +30,10 @@ const Todo = () => {
             placeholder="Write your todo list please..."
             value={task}
           />
-          <Button type="submit" id="clear">Create</Button>
+          <Button  text='Create' type="submit" id="clear"/>
         </form>
-        <Button text="Create"/>
       </div>
-      <TodoList items={lists} />
+      <Edit items={lists} />
     </React.Fragment>
   );
 };

@@ -3,9 +3,9 @@ import { FiEdit2 } from 'react-icons/fi';
 import { RiDeleteBin6Line} from 'react-icons/ri';
 import { GrCheckboxSelected } from "react-icons/gr";
 import Button from "./elements/Button";
-import "../styles/TodoList.css";
+import "../styles/Edit.css";
 
-const TodoList = ({ items }) => {
+const Edit = ({ items }) => {
 
   const handleButtonClick = () => {
      console.log("HI")
@@ -48,4 +48,4 @@ const TodoList = ({ items }) => {
   );
 };
 
-export default TodoList;
+export default Edit;
