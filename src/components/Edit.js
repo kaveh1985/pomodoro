@@ -16,6 +16,11 @@ const Edit = ({ items }) => {
     backgroundColor: 'blue',
     color: 'white',
     fontSize: '16px',
+    // borderRadius: '5px',
+    padding: '8px',
+    paddingLeft: "15px",
+    paddingRight: "15px",
+    margin: '4px'
     // Add more custom styles as needed
   };
 

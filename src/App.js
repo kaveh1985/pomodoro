@@ -4,7 +4,9 @@ import Menu from "./components/Menu.js";
 import Todo from "./components/Todo.js";
 import "./styles/App.css"
 
+
 function App() {
+    // const [pageColor, setPageColor] = useState(null)
     return (
         <div className='container'>
             <Header />

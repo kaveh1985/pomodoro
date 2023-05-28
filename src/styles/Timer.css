@@ -1,5 +1,5 @@
 .Timer {
-    color: red;
-    background-color: blue;
+    background-color: rgb(189, 89, 32);
     height: 300px;
+    border-radius: 5px;
 }

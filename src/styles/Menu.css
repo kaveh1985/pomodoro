@@ -1,13 +1,22 @@
-.menu {
-  display: flex;
-  background-color: #C95B6D;
+.menu ul li {
+  background-color: #9b0707;
+}
+.menu ul li span {
+  margin-left: 5px;
 }
 
-nav {
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
+.menu #third-option {
+  background: #c27e7e;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
+
+.menu #firt-option {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+
 
 .menu ul {
   line-height: 50px;
@@ -23,63 +32,4 @@ nav {
   text-align: center;
 }
 
-
   
-.menu a {
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding: 10px;
-  text-decoration: none;
-}
-
-.menu a:active {
-  background-color: #ccc;
-  height: 50px; /* set the same height as the normal state */
-  text-decoration: none;
-}
-
-
-
-.menu li.active {
-  /* Styles for the active menu item */
-  /* Example styles: */
-  background-color: #f0f0f0;
-  color: #333;
-  font-weight: bold;
-}
-
-
-
-
-
-/* .menu {
-  display: flex;
-  justify-content: space-around;
-}
-
-
-.menu a {
-  flex: 1;
-  text-align: center;
-}
-
-  .menu ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .menu li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .menu a {
-    display: block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: #000;
-  }
-   */
