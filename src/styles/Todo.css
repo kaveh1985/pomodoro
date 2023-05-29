@@ -7,9 +7,10 @@
     box-sizing: border-box;
     text-align: right;
     width: 100%;
-    outline: none;
+    /* outline: none; */
     height: 70px;
-    border-radius: 5px solid gray 1px;
+    border-radius: 5px;
+    border-style: none;
     text-align: center;
   }
   
@@ -24,6 +25,10 @@
     width: 20%;
     padding: auto;
     height: 50px;
+    border-radius: 5px;
+    outline-offset: 5px;
     cursor: pointer;
-    background-color: #1e90ff;
+    color: inherit;
+    background-color: #CD7B7B;
+    border-color:#CD7B7B
   }

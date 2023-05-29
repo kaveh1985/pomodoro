@@ -5,18 +5,19 @@
   margin-left: 5px;
 }
 
-.menu #third-option {
-  background: #c27e7e;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.menu #firt-option {
+.menu #first-option {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
 
+.menu .third-option {
+  border-top-right-radius: 10px;
+}
+
+.menu #active {
+  background: #c27e7e;
+}
 
 .menu ul {
   line-height: 50px;

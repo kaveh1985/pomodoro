@@ -1,5 +1,9 @@
 .Timer {
-    background-color: rgb(189, 89, 32);
+    background: #c27e7e;
     height: 300px;
     border-radius: 5px;
+}
+
+#time {
+    font-size: 7rem;
 }

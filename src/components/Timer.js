@@ -9,7 +9,7 @@ function Clock() {
       setTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [time]);
 
   const hours = time.getHours();
   const minutes = time.getMinutes();
@@ -18,7 +18,7 @@ function Clock() {
   return (
     <div className='Timer'>
       <p>Current time:</p>
-      <p>{hours}:{minutes}:{seconds}</p>
+      <p id="time">{hours}:{minutes}:{seconds}</p>
     </div>
   );
 }
