@@ -1,16 +1,23 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import { FiEdit2 } from 'react-icons/fi';
 import { RiDeleteBin6Line} from 'react-icons/ri';
-import { GrCheckboxSelected } from "react-icons/gr";
 import { GiFireSpellCast } from 'react-icons/gi';
 import Button from "./elements/Button";
 import "../styles/Edit.css";
 
-const Edit = ({ items }) => {
+const Edit = ({ items, assignment, handleDelete }) => {
+  const [renderedItems, setRenderedItems] = useState(items);
 
-  const handleButtonClick = () => {
-     console.log("HI")
-  };
+
+  const handleSelectClick = (item) => {
+     assignment(item)
+ }
+
+  const handleEditClick = () => {
+   console.log('Edit')
+ 
+  }
+
 
 
   const buttonStyle = {
@@ -28,31 +35,41 @@ const Edit = ({ items }) => {
   };
 
   return (
-    <div className="todo-container">
-       <div>
-       <Button
-            style={buttonStyle}
-            className="custom-styles"
-            onClick={handleButtonClick}
-          >
-               <RiDeleteBin6Line />
-                </Button>
-        <Button
-          style={buttonStyle}
-          className="custom-styles"
-          onClick={handleButtonClick}
-        >
-              <FiEdit2 />
-          </Button>
-          <Button
-            style={buttonStyle} text={"Selected"}
-            className="custom-styles"
-            onClick={handleButtonClick}
-          >
-                 <GiFireSpellCast />
-            </Button> 
-       </div>
-    </div>
+      <Fragment>
+        {items.map(({id, item}) => {
+            return  <div  key={id} className="todo-container"> 
+                        <div>
+                            <Button
+                              style={buttonStyle}
+                              className="custom-styles"
+                              onClick={() => {
+                                handleDelete(item)
+                              }}
+                            >
+                                  <RiDeleteBin6Line />
+                            </Button>
+                            <Button
+                              style={buttonStyle}
+                              className="custom-styles"
+                              onClick={handleEditClick}
+                            >
+                                <FiEdit2 />
+                            </Button>
+                            <Button
+                              style={buttonStyle}
+                              className="custom-styles"
+                              onClick={() => {
+                                handleSelectClick(item)
+                              }}
+                            >
+                                    <GiFireSpellCast /> Selected
+                            </Button> 
+                            <span>{item}</span>
+                     </div>
+                   </div>
+          })}
+      </Fragment>
+
   );
 };
 

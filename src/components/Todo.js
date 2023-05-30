@@ -1,29 +1,43 @@
 import React, { useState} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Edit from './Edit';
 import Button from './elements/Button'
 import "../styles/Todo.css";
 
 
-const Todo = () => {
+
+const Todo = ({assignment}) => {
+
   const [task, setTask] = useState('');
   const [lists, setLists] = useState([]);
 
   const handleSubmit = (event) => {
+     
+    const uniqueId = uuidv4();
     event.preventDefault();
-    setLists((prevLists) => [...prevLists, task]);
+    if(!task) return;
+    setLists((prevLists) => [...prevLists, {id: uniqueId, item: task}]);
     setTask('');
-    console.log('"hi')
   };
 
   const handleChange = (event) => {
     setTask(event.target.value);
   };
 
+  const handleDeleteClick = (list) => {
+    console.log('i got triggred!', list)
+   const updatedItems = lists.filter(({item}) => item !== list);
+      setLists(updatedItems)
+     
+
+  }
+
+
   return (
     <React.Fragment>
       <div className="buttonIn">
         <form onSubmit={handleSubmit}>
-          <input
+          <input autoComplete='off'
             onChange={handleChange}
             type="text"
             id="enter"
@@ -33,7 +47,7 @@ const Todo = () => {
           <Button  text='Create' type="submit" id="clear"/>
         </form>
       </div>
-      <Edit items={lists} />
+      <Edit items={lists} assignment={assignment} handleDelete={handleDeleteClick}/>
     </React.Fragment>
   );
 };
