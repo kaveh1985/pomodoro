@@ -1,17 +1,17 @@
-.todo-container {
+.edit {
   margin-top: 20px;
   position: relative;
   background-color: #C95B6D;
   height: 70px;
 }
 
-.todo-container > div {
+.edit > div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 100%;
 }
-.todo-container span {
+.edit span {
   margin-left: auto;
   margin-right: 25px;
 }

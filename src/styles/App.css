@@ -1,7 +1,7 @@
-body {
+body, html {
  color: white;
- 
 }
+
 
 .container {
   position: relative;
@@ -15,8 +15,18 @@ body {
 }
 
 
+
 @media only screen and (max-width: 650px) {
   .container {
     max-width: 470px; 
+  }
+}
+
+@keyframes example {
+  from {
+    background-color: rgb(221, 14, 14);
+  }
+  to {
+    background-color: rgb(219, 45, 45);
   }
 }

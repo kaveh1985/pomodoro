@@ -6,13 +6,15 @@ import '../styles/Menu.css';
 
 
 
-const Menu = () => {
+const Menu = ({ colorMode }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [activeItem, setActiveItem] = useState(true);
   const [selectedLeftBorder, setSelectedLeftBorder] = useState(false)
   const [selectedRightBorder, setSelectedRightBorder] = useState(false)
+  const [activeColor, setActiveColor] = useState('')
 
   const handleClick = (item) => {
+   
     setActiveItem(false)
     setSelectedItem(item);
     setSelectedLeftBorder((prevSelectedBorder) => !prevSelectedBorder);
@@ -30,26 +32,38 @@ const Menu = () => {
       <ul>
         <li id="first-option"
            style={{
-            backgroundColor: selectedItem === 'Item 1' ? '#c27e7e' : '',
+            backgroundColor: selectedItem === 'Item 1' ? activeColor : '',
             borderBottomLeftRadius: selectedLeftBorder ? '0px' : '5px'
           }}
-          onClick={() => handleClick('Item 1')}
+          onClick={() => {
+            handleClick('Item 1')
+            colorMode('#2F5D62')
+            setActiveColor('#688A8D')
+          }}
         >
           <RxLightningBolt size={18}/>
           <span>Long Pause</span>
         </li>
         <li id="second-option"
-          style={{ backgroundColor: selectedItem === 'Item 2' ? '#c27e7e' : '' }}
-          onClick={() => handleClick('Item 2')}
+          style={{ backgroundColor: selectedItem === 'Item 2' ? activeColor : '' }}
+          onClick={() => {
+            handleClick('Item 2')
+            colorMode('#61764B')
+            setActiveColor('#8D9C7D')
+          }}
         >
           <GiPopcorn size={18}/>
           <span>Short Pause</span>
         </li>
         <li className='third-option' id={activeItem ? "active": null}
-          style={{ backgroundColor: selectedItem === 'Item 3' ? '#c27e7e' : '',
+          style={{ backgroundColor: selectedItem === 'Item 3' ? activeColor : '',
           borderBottomRightRadius: selectedRightBorder ? '0px' : '5px'
         }}
-          onClick={() => handleClick('Item 3')}
+          onClick={() => {
+            handleClick('Item 3')
+            colorMode('#BA4949')
+            setActiveColor('#CD7B7B')
+          }}
         >
           <GiBrain size={18} />
          <span>Focus</span>

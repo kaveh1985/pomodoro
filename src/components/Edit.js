@@ -34,10 +34,14 @@ const Edit = ({ items, assignment, handleDelete }) => {
     // Add more custom styles as needed
   };
 
+  const styleEdit = {
+    backgroundColor: '#C46464',
+  }
+
   return (
       <Fragment>
         {items.map(({id, item}) => {
-            return  <div  key={id} className="todo-container"> 
+            return  <div style={styleEdit} key={id} className="edit"> 
                         <div>
                             <Button
                               style={buttonStyle}

@@ -48,7 +48,7 @@ const Todo = ({assignment, handleUpdateHeader}) => {
             onChange={handleChange}
             type="text"
             id="enter"
-            placeholder="Write your todo list please..."
+            placeholder="Please write your todo and then select..."
             value={task}
           />
           <Button  text='Create' type="submit" id="clear"/>
