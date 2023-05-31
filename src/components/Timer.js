@@ -15,8 +15,14 @@ function Clock() {
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
+
+  
+  const styleTimer = {
+    backgroundColor: '#C46464',
+  }
+  
   return (
-    <div className='Timer'>
+    <div style={styleTimer} className='Timer'>
       <p>Current time:</p>
       <p id="time">{hours}:{minutes}:{seconds}</p>
     </div>

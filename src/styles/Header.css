@@ -3,13 +3,13 @@
     justify-content: center;
     left: 50%;
     width: 100%;
-    background-color: #c95b6d;
     margin-bottom: 25px;
+    border-radius: 5px;
 }
 
 
 .Header h3 {
-   line-height: 22px;
+   height: 30px;
 }
 
 

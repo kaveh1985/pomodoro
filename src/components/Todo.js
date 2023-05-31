@@ -6,38 +6,45 @@ import "../styles/Todo.css";
 
 
 
-const Todo = ({assignment}) => {
+const Todo = ({assignment, handleUpdateHeader}) => {
 
   const [task, setTask] = useState('');
   const [lists, setLists] = useState([]);
 
   const handleSubmit = (event) => {
-     
     const uniqueId = uuidv4();
     event.preventDefault();
-    if(!task) return;
-    setLists((prevLists) => [...prevLists, {id: uniqueId, item: task}]);
-    setTask('');
+        
+        if(!task) return;
+        setLists((prevLists) => [...prevLists, {id: uniqueId, item: task}]);
+        setTask('');
+
   };
+
 
   const handleChange = (event) => {
     setTask(event.target.value);
   };
 
+
   const handleDeleteClick = (list) => {
-    console.log('i got triggred!', list)
-   const updatedItems = lists.filter(({item}) => item !== list);
+    handleUpdateHeader(list)
+    const updatedItems = lists.filter(({item}) => item !== list);
       setLists(updatedItems)
      
 
   }
 
+  const styleTodo = {
+    backgroundColor: '#C46464',
+  }
+  
 
   return (
     <React.Fragment>
       <div className="buttonIn">
         <form onSubmit={handleSubmit}>
-          <input autoComplete='off'
+          <input style={styleTodo} autoComplete='off'
             onChange={handleChange}
             type="text"
             id="enter"

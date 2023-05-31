@@ -5,8 +5,8 @@ import { GiFireSpellCast } from 'react-icons/gi';
 import Button from "./elements/Button";
 import "../styles/Edit.css";
 
+
 const Edit = ({ items, assignment, handleDelete }) => {
-  const [renderedItems, setRenderedItems] = useState(items);
 
 
   const handleSelectClick = (item) => {

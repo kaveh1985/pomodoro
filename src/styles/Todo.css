@@ -12,12 +12,20 @@
     border-radius: 5px;
     border-style: none;
     text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color:#d6d0d0
   }
 
   .buttonIn input:focus {
     outline: none;
   }
   
+  ::placeholder {
+    font-size: 17px; /* Replace with desired font size */
+    font-weight: bold;
+    color: #eeb7b7;
+  }
 
   .buttonIn button {
     position: absolute;

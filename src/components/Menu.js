@@ -20,9 +20,13 @@ const Menu = () => {
   };
 
 
+  const styleMenu = {
+    backgroundColor: '#C46464',
+  }
+  
 
   return (
-    <div className="menu">
+    <div style={styleMenu} className="menu">
       <ul>
         <li id="first-option"
            style={{
