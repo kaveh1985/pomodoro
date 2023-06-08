@@ -1,32 +1,81 @@
-import '../styles/Timer.css'
 import React, { useState, useEffect } from "react";
+import Modal from './Modal';
+import Button from './elements/Button';
+import "../styles/Timer.css";
 
-function Clock() {
-  const [time, setTime] = useState(new Date());
+const Timer = ({ header, timeBgColor, timeAmount }) => {
+  const [time, setTime] = useState(timeAmount); // Initial time in seconds
+  const [showModal, setShowModal] = useState(false);
+  const [timerStarted, setTimerStarted] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [time]);
+    let interval = null;
 
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-  const seconds = time.getSeconds();
+    if (timerStarted) {
+      interval = setInterval(() => {
+        setTime((prevTime) => {
+          if (prevTime === 0) {
+            clearInterval(interval);
+            return prevTime;
+          } else {
+            return prevTime - 1;
+          }
+        });
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timerStarted]);
+
+  const handleButtonClick = () => {
+    if (header) {
+      setTime(timeAmount);
+      setTimerStarted(true);
+    } else {
+      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(false);
+      }, 5000);
+    }
+  };
+
+  useEffect(() => {
+    setTimerStarted(false)
+    setTime(timeAmount);
+  }, [timeAmount]);
 
 
-  
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
   const styleTimer = {
-    backgroundColor: '#C46464',
-  }
-  
+    backgroundColor: timeBgColor,
+  };
+
+  const style = {
+    width: "160px",
+    height: '55px',
+    borderRadius: '5px',
+    borderColor: "#CD7B7B",
+    fontSize: "20px",
+    color: '#BA4949'
+  };
+
   return (
-    <div style={styleTimer} className='Timer'>
+    <div style={styleTimer} className="Timer">
       <p>Current time:</p>
-      <p id="time">{hours}:{minutes}:{seconds}</p>
+      {showModal && (<Modal />)}
+      <p id="time">
+        {`${minutes.toString().padStart(2, "0")}
+        :${seconds.toString().padStart(2, "0")}`}
+      </p>
+      <Button onClick={handleButtonClick} style={style} text={"Let's go"} />
     </div>
   );
-}
+};
 
-export default Clock;
+export default Timer;
+
+

@@ -1,0 +1,48 @@
+.container {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    animation-name: fadeIn;
+    animation-duration: 1.9s;
+    animation-fill-mode: forwards;
+  }
+  
+  .modal {
+    width: 350px;
+    height: 85px;
+    border-radius: 10px;
+    background-color: white;
+    color: #BA4949;
+  }
+  
+   @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  
+
+  /* .container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+  }
+  
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  } */
+  

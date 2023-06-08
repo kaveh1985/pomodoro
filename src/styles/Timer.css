@@ -1,8 +1,13 @@
 .Timer {
-    height: 380px;
     border-radius: 5px;
-}
 
-#time {
-    font-size: 7rem;
-}
+  }
+  
+  #time {
+    font-size: 130px;
+    line-height: 0;
+  }
+  
+  .task {
+    margin-top: 0px; /* Adjust the margin as needed */
+  }
