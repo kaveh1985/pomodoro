@@ -5,9 +5,10 @@ import { GiBrain } from 'react-icons/gi';
 import style from '../styles/Menu.module.css';
 import Timer from './Timer';
 import Header from './Header';
+import Todo from './Todo';
 
 
-const Menu = ({ bgColor, header}) => {
+const Menu = ({ bgColor, header, pageBgColor}) => {
   const mapControl =  [
     { menu: 'Long Pause', icon: <RxLightningBolt size={18} />},
     { menu: 'Short Pause', icon: <GiPopcorn size={18} />},
@@ -16,10 +17,11 @@ const Menu = ({ bgColor, header}) => {
 
 
   const defaultActiveItem = mapControl[2];
-  const [activeItem, setActiveItem] = useState(defaultActiveItem);
+  const [activeItem, setActiveItem] = useState(defaultActiveItem.menu);
   const [liColorShifter, setliColorShifter] = useState('#CD7B7B');
   const [ulBackground, setUlBackGroundColor] = useState("#C46464");
   const [timeSetter, setTimeSetter] = useState(1500);
+
 
 
   const handleTimeSelector = (value) => {
@@ -30,23 +32,30 @@ const Menu = ({ bgColor, header}) => {
      if (value === 'Focus') {
       setTimeSetter(1500);
       setUlBackGroundColor("#C46464")
+      pageBgColor('#BA4949')
       setliColorShifter('#CD7B7B');
     } if (value === 'Short Pause') {
       setTimeSetter(300);
+      pageBgColor('#61764B')
       setliColorShifter('#8D9B7D');
       setUlBackGroundColor("#798A66")
     } if (value === 'Long Pause') {
       setTimeSetter(900);
+      pageBgColor('#2F5D62')
       setliColorShifter('#688A8D');
       setUlBackGroundColor("#4E7579")
     }
+
+     
        handleTimeSelector(value);
   };
   
 
+  // assignment={handleTask} handleUpdateHeader={handleUpdateHeader}
+
   return (
     <div>
-      <Header bgColor={bgColor} header={header}/>
+      <Header bgColor={ulBackground} header={header}/>
         <div className={style.container}>
           <ul style={{ backgroundColor: ulBackground }} className={style.menu}>
             {mapControl.map((value, index) => (
@@ -61,7 +70,10 @@ const Menu = ({ bgColor, header}) => {
             ))}
           </ul>
           <div>
-          <Timer header={header} timeBgColor={"red"} timeAmount={timeSetter}/>
+          <Timer header={header} timeBgColor={ulBackground} timeAmount={timeSetter}/>
+          </div>
+          <div>
+          <Todo  ulBackground={ulBackground}/>
           </div>
         </div>
     </div>

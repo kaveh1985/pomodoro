@@ -1,37 +1,40 @@
 import React, { useState } from "react";
-import Header from "./components/Header.js";
 import Menu from "./components/Menu.js";
-import Todo from "./components/Todo.js";
 import "./styles/App.css";
 
 function App() {
-  const [assignment, setAssignment] = useState('');
-  const [colorSelected, setColorSelected] = useState(
-   {
-      minHeight: '100vh',
-      backgroundColor: '#BA4949',
-      transition: 'background-color 1s'
-  });
+  // const [assignment, setAssignment] = useState('');
+  const [colorBackground, setColorBackground] = useState('#BA4949')
+  const style =  {
+            minHeight: '100vh',
+            backgroundColor: colorBackground ,
+            transition: 'background-color 1s',
+           };
  
 
-  const handleTask = (item) => {
-    setAssignment(item);
-  };
+  // const handleTask = (item) => {
+  //   setAssignment(item);
+  // };
 
-  const handleUpdateHeader = (item) => {
-    if (assignment === item) {
-      setAssignment('');
-    }
-  };
+  // This method is passed to the Menu and get back here save it and then its value
+  // sent to the header through menu component to update its current value!
+  // const handleUpdateHeader = (item) => {
+  //   if (assignment === item) {
+  //     setAssignment('');
+  //   }
+  // };
 
-  
+  const pageBgColor = (color) => {
+         setColorBackground(color)
+  }
+
+
 
   return (
     <div>
-      <div style={colorSelected}>
+      <div style={style}>
         <div className='container'>
-          <Menu header={assignment} bgColor={colorSelected.backgroundColor}/>
-          <Todo assignment={handleTask} handleUpdateHeader={handleUpdateHeader} />
+          <Menu pageBgColor={pageBgColor}/>
         </div>
       </div>
     </div>

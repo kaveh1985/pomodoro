@@ -57,10 +57,10 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
   const style = {
     width: "160px",
     height: '55px',
-    borderRadius: '5px',
-    borderColor: "#CD7B7B",
+    borderRadius: '10px',
+    borderColor: timeBgColor,
     fontSize: "20px",
-    color: '#BA4949'
+    color: timeBgColor
   };
 
   return (
