@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { FiEdit2 } from 'react-icons/fi';
 import { RiDeleteBin6Line} from 'react-icons/ri';
 import { GiFireSpellCast } from 'react-icons/gi';
@@ -6,11 +6,11 @@ import Button from "./elements/Button";
 import "../styles/Edit.css";
 
 
-const Edit = ({ items, assignment, handleDelete }) => {
-
+const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
+  const [btnBgColor, setBtnBgColor] = useState('#CD7B7B');
 
   const handleSelectClick = (item) => {
-     assignment(item)
+    handleDisplay(item)
  }
 
   const handleEditClick = () => {
@@ -18,22 +18,33 @@ const Edit = ({ items, assignment, handleDelete }) => {
  
   }
 
+  useEffect(() => {
+    if(ulBackground === '#C46464') {
+      setBtnBgColor('#CD7B7B')
+    } 
+    if(ulBackground === '#798A66') {
+      setBtnBgColor('#8D9B7D')
+    }   if(ulBackground === '#4E7579') {
+      setBtnBgColor('#688A8D')
+    } 
+ }, [ulBackground])
+
 
 
   const buttonStyle = {
-    backgroundColor: '#CD7B7B',
+    backgroundColor: btnBgColor,
     color: 'white',
     fontSize: '16px',
     padding: '8px',
     paddingLeft: "15px",
     paddingRight: "15px",
     margin: '4px',
-    borderColor: "#CD7B7B",
+    borderColor: btnBgColor,
     borderRadius: '5px'
   };
 
   const styleEdit = {
-    backgroundColor: '#C46464',
+    backgroundColor: ulBackground,
   }
 
   return (

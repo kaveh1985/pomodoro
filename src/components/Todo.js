@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Edit from './Edit';
 import Button from './elements/Button'
@@ -6,7 +6,7 @@ import "../styles/Todo.css";
 
 
 
-const Todo = ({ assignment, handleUpdateHeader, ulBackground }) => {
+const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
 
   const [task, setTask] = useState('');
   const [lists, setLists] = useState([]);
@@ -39,19 +39,19 @@ const Todo = ({ assignment, handleUpdateHeader, ulBackground }) => {
   };
 
 
-  const handleDeleteClick = (list) => {
-    handleUpdateHeader(list)
-    const updatedItems = lists.filter(({item}) => item !== list);
+  const handleDeleteClick = (header) => {
+    handleDeleteHeader(header)
+    const updatedItems = lists.filter(({item}) => item !== header);
       setLists(updatedItems)
   }
 
 
-  const styleTodo = {
+  const styleTodoInput = {
     backgroundColor: ulBackground,
   }
   
   
- const styleEdit = {
+ const styleInputBtn = {
   backgroundColor: btnBgColor,
   borderColor: ulBackground,
  }
@@ -61,17 +61,20 @@ const Todo = ({ assignment, handleUpdateHeader, ulBackground }) => {
     <React.Fragment>
       <div className="buttonIn">
         <form onSubmit={handleSubmit}>
-          <input style={styleTodo} autoComplete='off'
+          <input style={styleTodoInput} autoComplete='off'
             onChange={handleChange}
             type="text"
             id="enter"
             placeholder="Please write your todo and then select..."
             value={task}
           />
-          <Button style={styleEdit} text='Create' type="submit" id="clear"/>
+          <Button style={styleInputBtn} text='Create' type="submit" id="clear"/>
         </form>
       </div>
-      <Edit items={lists} assignment={assignment} handleDelete={handleDeleteClick}/>
+      <Edit ulBackground={ulBackground} 
+         handleDisplay={handleDisplay} items={lists} 
+          handleDelete={handleDeleteClick}
+       />
     </React.Fragment>
   );
 };

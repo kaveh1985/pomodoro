@@ -4,7 +4,7 @@ import Button from './elements/Button';
 import "../styles/Timer.css";
 
 const Timer = ({ header, timeBgColor, timeAmount }) => {
-  const [time, setTime] = useState(timeAmount); // Initial time in seconds
+  const [time, setTime] = useState(timeAmount);
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
 
