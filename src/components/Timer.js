@@ -10,28 +10,29 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
   const [timerStarted, setTimerStarted] = useState(false);
 
   useEffect(() => {
-    let interval = null;
 
-    if (timerStarted) {
-      interval = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime === 0) {
-            clearInterval(interval);
-            playAlarmSound(); // Call the function to play the alarm sound
-            return prevTime;
-          } else {
-            return prevTime - 1;
-          }
-        });
-      }, 1000);
-    }
+  let interval = null;
+      if (timerStarted) {
+        interval = setInterval(() => {
+          setTime((prevTime) => {
+            if (prevTime === 0) {
+              clearInterval(interval);
+              playAlarmSound(); // Call the function to play the alarm sound
+              return prevTime;
+            } else {
+              return prevTime - 1;
+            }
+          });
+        }, 1000);
+      }
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [timerStarted]);
+      return () => {
+        clearInterval(interval);
+      };
+    }, [timerStarted, time]);
 
-  const handleButtonClick = () => {
+    
+const handleButtonClick = () => {
     if (header) {
       setTime(timeAmount);
       setTimerStarted(true);
@@ -43,10 +44,12 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
     }
   };
 
+
   useEffect(() => {
     setTimerStarted(false);
     setTime(timeAmount);
   }, [timeAmount]);
+
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -54,6 +57,7 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
   const styleTimer = {
     backgroundColor: timeBgColor,
   };
+
 
   const style = {
     width: "160px",
@@ -63,6 +67,7 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
     fontSize: "20px",
     color: timeBgColor
   };
+
 
   const playAlarmSound = () => {
     const audio = new Audio(alarmSound);
@@ -82,6 +87,7 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
     </div>
   );
 };
+
 
 export default Timer;
 
