@@ -5,84 +5,78 @@ import { GiFireSpellCast } from 'react-icons/gi';
 import Button from "./elements/Button";
 import "../styles/Edit.css";
 
-
 const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
   const [btnBgColor, setBtnBgColor] = useState('#CD7B7B');
 
   const handleSelectClick = (item) => {
-    handleDisplay(item)
- }
+    handleDisplay(item);
+  };
 
   const handleEditClick = () => {
-   console.log('Edit')
- 
-  }
+    console.log('Edit');
+  };
 
   useEffect(() => {
-    if(ulBackground === '#C46464') {
-      setBtnBgColor('#CD7B7B')
-    } 
-    if(ulBackground === '#798A66') {
-      setBtnBgColor('#8D9B7D')
-    }   if(ulBackground === '#4E7579') {
-      setBtnBgColor('#688A8D')
-    } 
- }, [ulBackground])
+    const backgroundColors = {
+      '#C46464': '#CD7B7B',
+      '#798A66': '#8D9B7D',
+      '#4E7579': '#688A8D',
+    };
 
-
+    setBtnBgColor(backgroundColors[ulBackground] || '#CD7B7B');
+  }, [ulBackground]);
 
   const buttonStyle = {
     backgroundColor: btnBgColor,
     color: 'white',
     fontSize: '16px',
     padding: '8px',
-    paddingLeft: "15px",
-    paddingRight: "15px",
+    paddingLeft: '15px',
+    paddingRight: '15px',
     margin: '4px',
     borderColor: btnBgColor,
-    borderRadius: '5px'
+    borderRadius: '5px',
   };
 
   const styleEdit = {
     backgroundColor: ulBackground,
-  }
+  };
 
   return (
-      <Fragment>
-        {items.map(({id, item}) => {
-            return  <div style={styleEdit} key={id} className="edit"> 
-                        <div>
-                            <Button
-                              style={buttonStyle}
-                              className="custom-styles"
-                              onClick={() => {
-                                handleDelete(item)
-                              }}
-                            >
-                                  <RiDeleteBin6Line />
-                            </Button>
-                            <Button
-                              style={buttonStyle}
-                              className="custom-styles"
-                              onClick={handleEditClick}
-                            >
-                                <FiEdit2 />
-                            </Button>
-                            <Button
-                              style={buttonStyle}
-                              className="custom-styles"
-                              onClick={() => {
-                                handleSelectClick(item)
-                              }}
-                            >
-                                    <GiFireSpellCast /> Selected
-                            </Button> 
-                            <span>{item}</span>
-                     </div>
-                   </div>
-          })}
-      </Fragment>
-
+    <Fragment>
+      {items.map(({ id, item }) => (
+        <div style={styleEdit} key={id} className="edit">
+          <div>
+            <Button
+              style={buttonStyle}
+              className="custom-styles"
+              onClick={() => {
+                handleDelete(item);
+              }}
+            >
+              <RiDeleteBin6Line />
+            </Button>
+            <Button
+              style={buttonStyle}
+              className="custom-styles"
+              onClick={handleEditClick}
+            >
+              <FiEdit2 />
+            </Button>
+            <Button
+              style={buttonStyle}
+              className="custom-styles"
+              onClick={() => {
+                handleSelectClick(item);
+              }}
+            >
+              <GiFireSpellCast /> Selected
+            </Button>
+            <span>{item}</span>
+          </div>
+        </div>
+      ))}
+    </Fragment>
   );
 };
 

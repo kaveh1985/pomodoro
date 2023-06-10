@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from './Modal';
 import Button from './elements/Button';
+import alarmSound from './elements/sound/Alarm.mp3';
 import "../styles/Timer.css";
 
 const Timer = ({ header, timeBgColor, timeAmount }) => {
@@ -16,6 +17,7 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
         setTime((prevTime) => {
           if (prevTime === 0) {
             clearInterval(interval);
+            playAlarmSound(); // Call the function to play the alarm sound
             return prevTime;
           } else {
             return prevTime - 1;
@@ -42,10 +44,9 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
   };
 
   useEffect(() => {
-    setTimerStarted(false)
+    setTimerStarted(false);
     setTime(timeAmount);
   }, [timeAmount]);
-
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -63,6 +64,12 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
     color: timeBgColor
   };
 
+  const playAlarmSound = () => {
+    const audio = new Audio(alarmSound);
+    audio.play();
+  };
+
+
   return (
     <div style={styleTimer} className="Timer">
       <p>Current time:</p>
@@ -77,5 +84,6 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
 };
 
 export default Timer;
+
 
 

@@ -21,17 +21,27 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
           setTask('');
    };
 
-  useEffect(() => {
-      if(ulBackground === '#C46464') {
-        setBtnBgColor('#CD7B7B')
-      } 
-      if(ulBackground === '#798A66') {
-        setBtnBgColor('#8D9B7D')
-      }   if(ulBackground === '#4E7579') {
-        setBtnBgColor('#688A8D')
-      } 
-   }, [ulBackground])
+  // useEffect(() => {
+  //     if(ulBackground === '#C46464') {
+  //       setBtnBgColor('#CD7B7B')
+  //     } 
+  //     if(ulBackground === '#798A66') {
+  //       setBtnBgColor('#8D9B7D')
+  //     }   if(ulBackground === '#4E7579') {
+  //       setBtnBgColor('#688A8D')
+  //     } 
+  //  }, [ulBackground])
 
+  useEffect(() => {
+    const backgroundColors = {
+      '#C46464': '#CD7B7B',
+      '#798A66': '#8D9B7D',
+      '#4E7579': '#688A8D',
+    };
+  
+    setBtnBgColor(backgroundColors[ulBackground] || '#CD7B7B');
+  }, [ulBackground]);
+  
 
 
   const handleChange = (event) => {
