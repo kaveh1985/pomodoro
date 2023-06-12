@@ -75,7 +75,7 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
             onChange={handleChange}
             type="text"
             id="enter"
-            placeholder="Please write your todo and then select..."
+            placeholder="write your Task."
             value={task}
           />
           <Button style={styleInputBtn} text='Create' type="submit" id="clear"/>

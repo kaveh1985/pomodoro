@@ -16,12 +16,21 @@ body, html {
 
 
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 670px) {
   .container {
-    max-width: 470px; 
+    max-width: 480px; 
   }
 }
 
+@media only screen and (max-width: 450px) {
+  .container {
+    max-width: 450px; 
+    width: 370px;
+  }
+}
+
+
+/* 
 @keyframes example {
   from {
     background-color: rgb(221, 14, 14);
@@ -29,4 +38,4 @@ body, html {
   to {
     background-color: rgb(219, 45, 45);
   }
-}
+} */

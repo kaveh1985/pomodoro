@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { RxLightningBolt } from 'react-icons/rx';
 import { GiPopcorn } from 'react-icons/gi';
 import { GiBrain } from 'react-icons/gi';
-import style from '../styles/Menu.module.css';
+import styles from '../styles/Menu.module.css';
 import Timer from './Timer';
 import Header from './Header';
 import Todo from './Todo';
@@ -69,11 +69,12 @@ const Menu = ({ pageBgColor}) => {
   return (
     <div>
       <Header bgColor={ulBackground} header={displayToHeader}/>
-        <div className={style.container}>
-          <ul style={{ backgroundColor: ulBackground }} className={style.menu}>
+        <div className={styles.container}>
+          <ul style={{ backgroundColor: ulBackground }} className={styles.menu}>
             {mapControl.map((value, index) => (
               <li
                 key={index}
+                // className={`${ index === 0 ? styles.firstItem : "" } ${index === value.length - 1 ? styles.lastItem : ""}`}
                 style={{ backgroundColor: activeItem === value.menu ? liColorShifter : '' }}
                 onClick={() => handleItemClick(value.menu)}
               >
@@ -97,3 +98,5 @@ const Menu = ({ pageBgColor}) => {
 };
 
 export default Menu;
+
+

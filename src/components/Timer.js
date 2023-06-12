@@ -65,7 +65,7 @@ const handleButtonClick = () => {
     borderRadius: '10px',
     borderColor: timeBgColor,
     fontSize: "20px",
-    color: timeBgColor
+    color: timeBgColor,
   };
 
 
@@ -73,6 +73,7 @@ const handleButtonClick = () => {
     const audio = new Audio(alarmSound);
     audio.play();
   };
+
 
 
   return (
@@ -83,7 +84,10 @@ const handleButtonClick = () => {
         {`${minutes.toString().padStart(2, "0")}
         :${seconds.toString().padStart(2, "0")}`}
       </p>
-      <Button onClick={handleButtonClick} style={style} text={"Let's go"} />
+        { timerStarted ? <Button onClick={() => {
+            setTimerStarted(false)
+        }} className="button" style={style} text={"Pause"} /> : "" }
+        <Button onClick={handleButtonClick} style={style} text={"Let's go"} />
     </div>
   );
 };

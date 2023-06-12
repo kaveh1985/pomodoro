@@ -7,7 +7,7 @@ import "../styles/Edit.css";
 
 const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
   const [btnBgColor, setBtnBgColor] = useState('#CD7B7B');
-
+  const [select, setSelect] = useState("select");
   const handleSelectClick = (item) => {
     handleDisplay(item);
   };
@@ -68,9 +68,10 @@ const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
               className="custom-styles"
               onClick={() => {
                 handleSelectClick(item);
+                setSelect('Selected')
               }}
             >
-              <GiFireSpellCast /> Selected
+              <GiFireSpellCast /> {select}
             </Button>
             <span>{item}</span>
           </div>

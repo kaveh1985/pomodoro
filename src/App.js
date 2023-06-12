@@ -18,12 +18,10 @@ function App() {
 
 
   return (
-    <div>
-      <div style={style}>
+    <div className="myDiv" style={style}>
         <div className='container'>
           <Menu pageBgColor={pageBgColor}/>
         </div>
-      </div>
     </div>
   );
 }

@@ -22,9 +22,12 @@
   }
   
   ::placeholder {
+    padding-left: 40%;
     font-size: 17px; /* Replace with desired font size */
-    font-weight: bold;
+    font-weight: lighter;
     color: white;
+    margin-right: 70px;
+    color: #a39696;
   }
 
   .buttonIn button {
@@ -45,3 +48,15 @@
     background-color: #CD7B7B;
     border-color:#CD7B7B
   }
+
+  .edit span {
+    margin-left: auto;
+    margin-right: 25px;
+  }
+  
+  @media only screen and (max-width: 450px) {
+   #clear {
+       width: 120px;
+    }
+  }
+  
