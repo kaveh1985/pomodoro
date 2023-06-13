@@ -69,13 +69,13 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
 
   return (
     <React.Fragment>
-      <div className="buttonIn">
+      <div className="todoInput">
         <form onSubmit={handleSubmit}>
           <input style={styleTodoInput} autoComplete='off'
             onChange={handleChange}
             type="text"
             id="enter"
-            placeholder="write your Task."
+            placeholder="Write your task"
             value={task}
           />
           <Button style={styleInputBtn} text='Create' type="submit" id="clear"/>

@@ -12,20 +12,52 @@ body, html {
   align-items: center;
   text-align: center;
   cursor: pointer;
+  /* cursor: pointer; 
+   important: this cursor pointer in small devices 
+   makes the page to flash out
+   so by making this "cursor: auto" in 
+   the @media query we prevent this behavior in the 
+   small devices
+  */
+
 }
 
+@media only screen and (max-width: 820px) {
+  .container {
+    width: 750px; 
+    cursor: auto;
+  }
+}
 
 
 @media only screen and (max-width: 670px) {
   .container {
     max-width: 480px; 
+    cursor: auto;
   }
 }
+
 
 @media only screen and (max-width: 450px) {
   .container {
     max-width: 450px; 
     width: 370px;
+    cursor: auto;
+  }
+}
+
+
+@media only screen and (max-width: 360px) {
+  .container {
+    max-width: 350px; 
+    cursor: auto;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .container {
+    width: 260px; 
+    cursor: auto;
   }
 }
 
