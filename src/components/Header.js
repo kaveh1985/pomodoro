@@ -23,6 +23,7 @@ function Header({ header, bgColor, timer, booleanTime}) {
     } else {
       pickAnimColor = '';
     }
+
     setColorSelected(bgColor);
     setAnimColor(pickAnimColor);
   }, [bgColor]);

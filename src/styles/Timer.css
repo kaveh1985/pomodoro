@@ -2,42 +2,18 @@
     border-radius: 5px;
     height: 385px;
     font-family:'Trebuchet MS', sans-serif;
-  }
-  /*/'Trebuchet MS', sans-serif;
-  'Trebuchet MS', sans-serif;*/
-
-  
-  #time {
-    font-size: 130px;
-    line-height: 0;
-  }
-  
-  .task {
-    margin-top: 0px; /* Adjust the margin as needed */
-  }
-
-  .button {
-    margin-right: 25px; /* Adjust the value to increase or decrease the spacing */
-  }
-  
- 
-  .Timer {
     border-radius: 5px;
     height: 400px;
   }
+
+
   
   #time {
     font-size: 130px;
     line-height: 0;
   }
   
-  .task {
-    margin-top: 0px; /* Adjust the margin as needed */
-  }
-  
-  .button {
-    margin-right: 25px; /* Adjust the value to increase or decrease the spacing */
-  }
+
   
   /* *it means the width should weather be equal to this number or lesser to take effect */
   @media only screen and (max-width: 450px) {

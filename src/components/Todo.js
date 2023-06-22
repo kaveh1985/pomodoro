@@ -64,7 +64,7 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
   
  const styleInputBtn = {
   backgroundColor: btnBgColor,
-  borderColor: ulBackground,
+  borderColor: btnBgColor,
  }
 
 

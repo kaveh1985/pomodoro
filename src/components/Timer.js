@@ -4,22 +4,22 @@ import Button from './elements/Button';
 import alarmSound from './elements/sound/Alarm.mp3';
 import "../styles/Timer.css";
 
-const Timer = ({ header, timeBgColor, timeAmount, timeStartedHandler }) => {
+const Timer = ({ header, timeBgColor, timeAmount }) => {
   const [time, setTime] = useState(timeAmount);
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
-
-
+  const [displayButtons, setDisplayButtons] = useState(true)
 
   useEffect(() => {
-    let interval = null;
+
+  let interval = null;
       if (timerStarted) {
-          timeStartedHandler(timerStarted)
+
         interval = setInterval(() => {
           setTime((prevTime) => {
             if (prevTime === 0) {
               clearInterval(interval);
-              // playAlarmSound(); // Call the function to play the alarm sound
+              playAlarmSound(); // Call the function to play the alarm sound
               return prevTime;
             } else {
               return prevTime - 1;
@@ -27,14 +27,16 @@ const Timer = ({ header, timeBgColor, timeAmount, timeStartedHandler }) => {
           });
         }, 1000);
       }
+
       return () => {
         clearInterval(interval);
       };
-    }, [timerStarted, time, timeStartedHandler]);
+    }, [timerStarted, time]);
 
     
 const handleButtonClick = () => {
     if (header) {
+      setDisplayButtons(false)
       setTime(timeAmount);
       setTimerStarted(true);
     } else {
@@ -58,6 +60,19 @@ const handleButtonClick = () => {
   const styleTimer = {
     backgroundColor: timeBgColor,
   };
+
+
+  const handlePauseButton = () => {
+    setTime((minutes*60)+seconds)
+    setTimerStarted(!timerStarted)
+  }
+
+
+  const handleRepeatButton = () => {
+       setDisplayButtons(true)
+       setTimerStarted(false)
+       setTime(timeAmount)
+  }
 
 
   const style = {
@@ -84,10 +99,14 @@ const handleButtonClick = () => {
       <p id="time">
         {`${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`}
       </p>
-        { timerStarted ? <Button onClick={() => {
-            setTimerStarted(false)
-        }} className="button" style={style} text={"Pause"} /> : "" }
-        <Button onClick={handleButtonClick} style={style} text={"Let's go"} />
+       
+      { displayButtons? (<Button onClick={handleButtonClick} style={style} text={"Let's go"} />)
+        :
+        <>
+            <Button onClick={handlePauseButton} style={style} text="Pause"/>
+            <Button onClick={handleRepeatButton} style={style} text="Again"/>
+        </> 
+        }
     </div>
   );
 };

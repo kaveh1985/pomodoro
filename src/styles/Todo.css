@@ -1,6 +1,6 @@
 .todoInput {
-    margin-top: 20px;
     position: relative;
+    margin-top: 20px;
   }
   
   .todoInput input {
@@ -14,17 +14,14 @@
     border-radius: 5px;
     border-style: none;
     color: rgb(197, 164, 164);
-  }
-
-  .todoInput input:focus {
     outline: none;
   }
-  
+
     
   .todoInput input::placeholder {
-    font-size: 20px; /* Replace with desired font size */
+    font-size: 17px;
     font-weight: lighter;
-    color: #E2B2B2;
+    color: white;
     text-align: center;
   }
 
@@ -44,8 +41,6 @@
     outline-offset: 5px;
     cursor: pointer;
     color: inherit;
-    background-color: #CD7B7B;
-    border-color:#CD7B7B
   }
 
   @media only screen and (max-width: 450px) {
