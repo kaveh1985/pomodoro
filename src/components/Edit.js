@@ -1,20 +1,24 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { FiEdit2 } from 'react-icons/fi';
-import { RiDeleteBin6Line} from 'react-icons/ri';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import { GiFireSpellCast } from 'react-icons/gi';
 import Button from "./elements/Button";
 import "../styles/Edit.css";
+import EditForm from "./elements/EditForm";
 
-const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
+
+const Edit = ({ items, handleDelete, handleUpdate, handleDisplay, ulBackground }) => {
   const [btnBgColor, setBtnBgColor] = useState('#CD7B7B');
   const [select, setSelect] = useState("select");
+  const [openInput, setOpenInput] = useState(false)
+
   const handleSelectClick = (item) => {
     handleDisplay(item);
   };
 
-  const handleEditClick = () => {
-    console.log('Edit');
-  };
+const handleOpenInput = () => {
+  setOpenInput(!openInput)
+}
 
   useEffect(() => {
     const backgroundColors = {
@@ -47,6 +51,7 @@ const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
       {items.map(({ id, item }) => (
         <div style={styleEdit} key={id} className="edit">
           <div>
+{/* delete button */}
             <Button
               style={buttonStyle}
               className="custom-styles"
@@ -56,24 +61,33 @@ const Edit = ({ items, handleDelete, handleDisplay, ulBackground }) => {
             >
               <RiDeleteBin6Line />
             </Button>
-            <Button
+{/* edit button */}
+            <Button onClick={handleOpenInput}
               style={buttonStyle}
               className="custom-styles"
-              onClick={handleEditClick}
             >
               <FiEdit2 />
             </Button>
+
+{/*Select button  */}
             <Button
               style={buttonStyle}
               className="custom-styles"
               onClick={() => {
                 handleSelectClick(item);
-                setSelect('Selected')
+                setSelect('Selected');
               }}
             >
-              <GiFireSpellCast /> {select}
+              <GiFireSpellCast id="Gifi"/> {select}
             </Button>
-            <span>{item}</span>
+
+            <span className="edit-container">
+              {openInput?  <EditForm list={item} onUpdate={(updatedText) => {
+                 handleUpdate(id, updatedText)
+              }}/>: ""}
+               {openInput? " " : item}
+               
+            </span>
           </div>
         </div>
       ))}

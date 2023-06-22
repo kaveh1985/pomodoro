@@ -21,17 +21,6 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
           setTask('');
    };
 
-  // useEffect(() => {
-  //     if(ulBackground === '#C46464') {
-  //       setBtnBgColor('#CD7B7B')
-  //     } 
-  //     if(ulBackground === '#798A66') {
-  //       setBtnBgColor('#8D9B7D')
-  //     }   if(ulBackground === '#4E7579') {
-  //       setBtnBgColor('#688A8D')
-  //     } 
-  //  }, [ulBackground])
-
   useEffect(() => {
     const backgroundColors = {
       '#C46464': '#CD7B7B',
@@ -43,16 +32,28 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
   }, [ulBackground]);
   
 
+  const handleUpdateClick = (id, updatedText) => {
+    const updatedList = lists.map((item) => {
+      if (item.id === id) {
+        return { ...item, item: updatedText };
+      }
+      return item;
+    });
+    setLists(updatedList);
+  };
+
+  
 
   const handleChange = (event) => {
     setTask(event.target.value);
   };
 
 
-  const handleDeleteClick = (header) => {
-    handleDeleteHeader(header)
-    const updatedItems = lists.filter(({item}) => item !== header);
+  const handleDeleteClick = (list) => {
+    handleDeleteHeader(list)
+    const updatedItems = lists.filter(({item}) => item !== list);
       setLists(updatedItems)
+      
   }
 
 
@@ -81,7 +82,7 @@ const Todo = ({ handleDeleteHeader, ulBackground, handleDisplay }) => {
           <Button style={styleInputBtn} text='Create' type="submit" id="clear"/>
         </form>
       </div>
-      <Edit ulBackground={ulBackground} 
+      <Edit ulBackground={ulBackground}  handleUpdate={handleUpdateClick}
          handleDisplay={handleDisplay} items={lists} 
           handleDelete={handleDeleteClick}
        />

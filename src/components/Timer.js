@@ -4,20 +4,22 @@ import Button from './elements/Button';
 import alarmSound from './elements/sound/Alarm.mp3';
 import "../styles/Timer.css";
 
-const Timer = ({ header, timeBgColor, timeAmount }) => {
+const Timer = ({ header, timeBgColor, timeAmount, timeStartedHandler }) => {
   const [time, setTime] = useState(timeAmount);
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
 
-  useEffect(() => {
 
-  let interval = null;
+
+  useEffect(() => {
+    let interval = null;
       if (timerStarted) {
+          timeStartedHandler(timerStarted)
         interval = setInterval(() => {
           setTime((prevTime) => {
             if (prevTime === 0) {
               clearInterval(interval);
-              playAlarmSound(); // Call the function to play the alarm sound
+              // playAlarmSound(); // Call the function to play the alarm sound
               return prevTime;
             } else {
               return prevTime - 1;
@@ -25,11 +27,10 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
           });
         }, 1000);
       }
-
       return () => {
         clearInterval(interval);
       };
-    }, [timerStarted, time]);
+    }, [timerStarted, time, timeStartedHandler]);
 
     
 const handleButtonClick = () => {
@@ -81,8 +82,7 @@ const handleButtonClick = () => {
       <p>Current time:</p>
       {showModal && (<Modal />)}
       <p id="time">
-        {`${minutes.toString().padStart(2, "0")}
-        :${seconds.toString().padStart(2, "0")}`}
+        {`${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`}
       </p>
         { timerStarted ? <Button onClick={() => {
             setTimerStarted(false)

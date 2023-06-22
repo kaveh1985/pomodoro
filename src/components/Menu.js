@@ -13,12 +13,12 @@ const Menu = ({ pageBgColor}) => {
   const [ulBackground, setUlBackGroundColor] = useState("#C46464");
   const [timeSetter, setTimeSetter] = useState(1500);
   const [displayToHeader, setDisplayToHeader] = useState('')
-
+  const [checkTimeBoolean, setTimeBoolean] = useState(false)
 
   const mapControl =  [
-    { menu: 'Long Pause', icon: <RxLightningBolt size={18} />},
-    { menu: 'Short Pause', icon: <GiPopcorn size={18} />},
-    { menu: 'Focus', icon: <GiBrain size={18} />},
+    { menu: 'Long Pause', icon: <RxLightningBolt id='Rx' size={18} />},
+    { menu: 'Short Pause', icon: <GiPopcorn className='icon' size={18} />},
+    { menu: 'Focus', icon: <GiBrain className='icon' size={18} />},
   ];
   const defaultActiveItem = mapControl[2];
   const [activeItem, setActiveItem] = useState(defaultActiveItem.menu);
@@ -41,6 +41,12 @@ const Menu = ({ pageBgColor}) => {
   const handleTimeSelector = (value) => {
     setActiveItem(value);
   };
+
+
+  const timeStartedHandler = (getTimeBoolean) => {
+      setTimeBoolean(getTimeBoolean)
+  }
+
 
 
   const handleItemClick = (value) => {
@@ -68,7 +74,7 @@ const Menu = ({ pageBgColor}) => {
 
   return (
     <div>
-      <Header bgColor={ulBackground} header={displayToHeader}/>
+      <Header booleanTime={checkTimeBoolean} bgColor={ulBackground} header={displayToHeader} timer={timeSetter}/>
         <div className={styles.container}>
           <ul style={{ backgroundColor: ulBackground }} className={styles.menu}>
             {mapControl.map((value, index) => (
@@ -84,7 +90,7 @@ const Menu = ({ pageBgColor}) => {
             ))}
           </ul>
           <div>
-          <Timer header={displayToHeader} timeBgColor={ulBackground} timeAmount={timeSetter}/>
+          <Timer timeStartedHandler={timeStartedHandler} header={displayToHeader} timeBgColor={ulBackground} timeAmount={timeSetter}/>
           </div>
           <div>
           <Todo 

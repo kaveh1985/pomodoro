@@ -41,7 +41,7 @@ body, html {
 @media only screen and (max-width: 450px) {
   .container {
     max-width: 450px; 
-    width: 370px;
+    width: 380px;
     cursor: auto;
   }
 }
@@ -49,7 +49,7 @@ body, html {
 
 @media only screen and (max-width: 360px) {
   .container {
-    max-width: 350px; 
+    max-width: 343px; 
     cursor: auto;
   }
 }
@@ -60,14 +60,3 @@ body, html {
     cursor: auto;
   }
 }
-
-
-/* 
-@keyframes example {
-  from {
-    background-color: rgb(221, 14, 14);
-  }
-  to {
-    background-color: rgb(219, 45, 45);
-  }
-} */

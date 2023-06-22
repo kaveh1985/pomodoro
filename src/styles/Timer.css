@@ -1,7 +1,11 @@
 .Timer {
     border-radius: 5px;
     height: 385px;
+    font-family:'Trebuchet MS', sans-serif;
   }
+  /*/'Trebuchet MS', sans-serif;
+  'Trebuchet MS', sans-serif;*/
+
   
   #time {
     font-size: 130px;
@@ -19,7 +23,7 @@
  
   .Timer {
     border-radius: 5px;
-    height: 385px;
+    height: 400px;
   }
   
   #time {
