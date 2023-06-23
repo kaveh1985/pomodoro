@@ -4,7 +4,7 @@ import Button from './elements/Button';
 import alarmSound from './elements/sound/Alarm.mp3';
 import "../styles/Timer.css";
 
-const Timer = ({ header, timeBgColor, timeAmount }) => {
+const Timer = ({ header, timeBgColor, timeAmount, handleTime }) => {
   const [time, setTime] = useState(timeAmount);
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
@@ -33,7 +33,18 @@ const Timer = ({ header, timeBgColor, timeAmount }) => {
       };
     }, [timerStarted, time]);
 
+
+
     
+    useEffect(() => {
+      if(time === 0) {
+         handleTime(time)
+      }
+    }, [time, handleTime])
+    
+
+
+
 const handleButtonClick = () => {
     if (header) {
       setDisplayButtons(false)
@@ -75,6 +86,16 @@ const handleButtonClick = () => {
   }
 
 
+  const playAlarmSound = () => {
+    const audio = new Audio(alarmSound);
+    audio.play();
+  };
+
+
+
+
+
+
   const style = {
     width: "160px",
     height: '55px',
@@ -82,12 +103,6 @@ const handleButtonClick = () => {
     borderColor: timeBgColor,
     fontSize: "20px",
     color: timeBgColor,
-  };
-
-
-  const playAlarmSound = () => {
-    const audio = new Audio(alarmSound);
-    audio.play();
   };
 
 
