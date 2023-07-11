@@ -88,7 +88,7 @@ const Menu = ({ pageBgColor}) => {
         handleItemClick('Focus');
         setTimeToZero(true);
         clearInterval(interval);
-      }, 3000);
+      }, 1000);
       
     }
   }, [handleItemClick, timeToZero, timeSetter]);
@@ -134,7 +134,7 @@ const Menu = ({ pageBgColor}) => {
           <div>
   {/* menu parts */}
 
-          <Timer handleTime={handleTimeToZero} 
+          <Timer autoActive={timeToZero? true: false } handleTime={handleTimeToZero} 
              timeStartedHandler={timeStartedHandler} header={displayToHeader}
                  timeBgColor={ulBackground} timeAmount={timeSetter}
              />
