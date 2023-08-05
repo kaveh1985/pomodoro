@@ -14,7 +14,8 @@ const Menu = ({ pageBgColor}) => {
   const [timeSetter, setTimeSetter] = useState(1500);
   const [displayToHeader, setDisplayToHeader] = useState('')
   const [checkTimeBoolean, setTimeBoolean] = useState(false)
-  const [timeToZero, setTimeToZero] = useState('')
+  const [timeToZero, setTimeToZero] = useState('');
+  const [defaultTimeStart, setDefaultTimeStart] = useState("")
 
 
   const mapControl =  [
@@ -45,8 +46,9 @@ const Menu = ({ pageBgColor}) => {
         setActiveItem(value); 
       },[]) 
 
-
+// time to fix!
   const timeStartedHandler = (getTimeBoolean) => {
+    console.log(getTimeBoolean)
       setTimeBoolean(getTimeBoolean)
   }
 
@@ -76,6 +78,7 @@ const Menu = ({ pageBgColor}) => {
       }
 
       handleTimeSelector(value);
+      setDefaultTimeStart(true)
     },
     [pageBgColor, handleTimeSelector]
   );
@@ -134,7 +137,7 @@ const Menu = ({ pageBgColor}) => {
           <div>
   {/* menu parts */}
 
-          <Timer autoActive={timeToZero? true: false } handleTime={handleTimeToZero} 
+          <Timer defaultTimeStartBtn={defaultTimeStart} autoActive={timeToZero? true: false } handleTime={handleTimeToZero} 
              timeStartedHandler={timeStartedHandler} header={displayToHeader}
                  timeBgColor={ulBackground} timeAmount={timeSetter}
              />

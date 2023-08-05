@@ -37,7 +37,7 @@ const progressiveDivStyle = {
   borderRadius: '5px',
 };
 
-
+console.log(booleanTime, time , width)
   const keyframesStyle = `
     @keyframes progress {
       0% { width: 0; }

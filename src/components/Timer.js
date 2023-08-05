@@ -4,7 +4,7 @@ import Button from './elements/Button';
 import alarmSound from './elements/sound/Alarm.mp3';
 import "../styles/Timer.css";
 
-const Timer = ({ header, timeBgColor, timeAmount, handleTime, activateTime }) => {
+const Timer = ({ header, timeBgColor, timeAmount, handleTime, timeStartedHandler, defaultTimeStartBtn }) => {
   const [time, setTime] = useState(timeAmount);
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
@@ -49,6 +49,7 @@ const handleButtonClick = () => {
       setDisplayButtons(false)
       setTime(timeAmount);
       setTimerStarted(true);
+      timeStartedHandler(true)
     } else {
       setShowModal(true);
       setTimeout(() => {
@@ -61,7 +62,10 @@ const handleButtonClick = () => {
   useEffect(() => {
     setTimerStarted(false);
     setTime(timeAmount);
-  }, [timeAmount]);
+    if(defaultTimeStartBtn) {
+       setDisplayButtons(true)
+    }
+  }, [timeAmount, defaultTimeStartBtn]);
 
 
   const minutes = Math.floor(time / 60);
