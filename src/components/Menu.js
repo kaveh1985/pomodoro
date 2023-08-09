@@ -71,7 +71,7 @@ const Menu = ({ pageBgColor}) => {
         setliColorShifter('#8D9B7D');
         setUlBackGroundColor('#798A66');
       } else if (value === 'Long Pause') {
-        setTimeSetter(900);
+        setTimeSetter(90);
         pageBgColor('#2F5D62');
         setliColorShifter('#688A8D');
         setUlBackGroundColor('#4E7579');
